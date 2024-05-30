@@ -31,11 +31,17 @@ const INSERT_CITY = () =>{
 
     return [query1, query2, query3]
 }
-const INSERT_CITY_2 = [
-'INSERT INTO City VALUES (\'Reykjavik\')',
-'INSERT INTO City VALUES (\'Reykjavik\')',
-'INSERT INTO City VALUES (\'Reykjavik\')',
-]
+
+const cityTableExist = 
+` SELECT EXISTS (
+    SELECT FROM test.City
+);`;
+
+const TemperatureTableExist = 
+` SELECT EXISTS (
+    SELECT FROM test.Temperature 
+);`;
+
 
 module.exports = {
     CREATE_CITY,
