@@ -13,3 +13,4 @@ collegamento a repositori online
 1) digitare git remote add origin <link repository>
 2) git push 
 3) controllare sul repositori se è stato pushato il codice
+4) commit
