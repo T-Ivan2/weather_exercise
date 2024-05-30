@@ -1,0 +1,10 @@
+nella radice del tuo progetto digitare
+git init
+
+
+preparazione commit
+ 1) aggiungere i file che si desiderano committare e successivamente pushare con "git add <nome file> " oppure "git add ." per committare tutti i file, oppure usare il spource control di vscode
+ 2) configurare l'utenza che fa la commit   
+    2.1) git config user.email "la tua email"
+    2.2) git config user.name "il tuo nome"
+ 3) git commit
