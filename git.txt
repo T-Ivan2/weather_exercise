@@ -8,3 +8,8 @@ preparazione commit
     2.1) git config user.email "la tua email"
     2.2) git config user.name "il tuo nome"
  3) git commit
+
+collegamento a repositori online
+1) digitare git remote add origin <link repository>
+2) git push 
+3) controllare sul repositori se è stato pushato il codice
