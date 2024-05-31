@@ -41,11 +41,14 @@ const TemperatureTableExist =
 ` SELECT EXISTS (
     SELECT FROM test.Temperature 
 );`;
-
+  const getQueryInsertCity = (city)=>{
+        return `INSERT INTO City VALUES ('${city}')`
+  }
 
 module.exports = {
     CREATE_CITY,
     CREATE_TEMPERATURE,
     CREATE_CONDITION,
-    INSERT_CITY
+    INSERT_CITY,
+    getQueryInsertCity
 };
