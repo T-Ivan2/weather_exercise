@@ -1,4 +1,4 @@
-const {Pool} = require('pg');
+const { Pool } = require('pg');
 
 const pool = new Pool({ // IVAN
     host: process.env.PG_HOST,

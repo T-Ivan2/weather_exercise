@@ -23,20 +23,24 @@ CREATE TABLE IF NOT EXISTS Condition (
     name TEXT UNIQUE NOT NULL
 );`;
 
-  const getQueryInsertCity = (city)=>{
-        return `INSERT INTO City (name) VALUES ($1)`;
-  }
+const getQueryInsertCity = (city) => {
+    return `INSERT INTO City (name) VALUES ($1)`;
+}
 
-  const getQueryInsertCondition = (condition) =>{
+const getQueryInsertCondition = (condition) => {
     return `INSERT INTO Condition (name) VALUES ($1)`;
-  }
+}
 
-
+const getQueryInsertTemperature = () => `
+  INSERT INTO Temperature (city_id, condition_id, temperature, humidity, time)
+  VALUES ($1, $2, $3, $4, $5);
+`;
 
 module.exports = {
     CREATE_CITY,
     CREATE_TEMPERATURE,
     CREATE_CONDITION,
     getQueryInsertCity,
-    getQueryInsertCondition
+    getQueryInsertCondition,
+    getQueryInsertTemperature
 };
