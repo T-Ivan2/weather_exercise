@@ -18,6 +18,12 @@
             "command": "npm start",
             "request": "launch",
             "type": "node-terminal"
+        },
+        {
+            "name": "npm init",
+            "command": "npm run init",
+            "request": "launch",
+            "type": "node-terminal"
         }
     ]
 }
