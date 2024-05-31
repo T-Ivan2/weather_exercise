@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "init": "node ./src/scripts/init.js",
-    "start": "node ./src/index.js"
+    "start": "node -r dotenv/config ./src/index.js"
   },
   "keywords": [],
   "author": "Ivan Tortoriello",
@@ -12,7 +12,7 @@
   "description": "Esercizio del meto ",
   "dependencies": {
     "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
     "pg": "^8.11.5"
-  },
-  "devDependencies": {}
+  }
 }

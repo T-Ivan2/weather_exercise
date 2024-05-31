@@ -15,3 +15,9 @@ collegamento a repositori online
 3) controllare sul repositori se è stato pushato il codice
 4) commit
 5) commit 2
+
+
+USARE LE VARIABILI DI AMBIENTE
+1) installare il pacchetto dotnev
+2) creare il file .env nella radice del progetto
+3) nello script start aggiungere il flag "-r dotenv/config"

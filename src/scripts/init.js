@@ -43,7 +43,7 @@ const init = async () => {
         } ;
     }
 
-    
+    process.exit(0);
 
   } catch (err) {
     console.error("Error creating tables:", err);
