@@ -1,7 +1,7 @@
 const pool = require("../DBManagement/DatabaseConnection");
 const queries = require("../DBManagement/queries");
+
 const init = async () => {
-  console.log("init");
   try {
     // await pool.query(queries.cityTableExist);
 
@@ -17,7 +17,7 @@ const init = async () => {
 
     // await pool.query(CREATE_TEMPERATURE);
     // console.log("Table Temperature has been created.");
-     const citiesToInsert = ['Reykjavik', 'Torino', 'Bardai'];
+    const citiesToInsert = ['Reykjavik', 'Torino', 'Bardai'];
     for (const city of citiesToInsert) {
         // select per verificare se la città è gia inserita SELECT * from City where name === city
         console.log(queries.getQueryInsertCity(city))

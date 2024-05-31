@@ -23,24 +23,6 @@ CREATE TABLE IF NOT EXISTS Condition (
     name TEXT UNIQUE NOT NULL
 );`;
 
-
-const INSERT_CITY = () =>{
-    const query1 = `INSERT INTO City VALUES ('Reykjavik')`;
-    const query2 = `INSERT INTO City VALUES ('Torino')`;
-    const query3 = `INSERT INTO City VALUES ('Bardai')`;
-
-    return [query1, query2, query3]
-}
-
-const cityTableExist = 
-` SELECT EXISTS (
-    SELECT FROM test.City
-);`;
-
-const TemperatureTableExist = 
-` SELECT EXISTS (
-    SELECT FROM test.Temperature 
-);`;
   const getQueryInsertCity = (city)=>{
         return `INSERT INTO City VALUES ('${city}')`
   }
