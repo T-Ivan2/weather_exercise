@@ -2,33 +2,26 @@ const axios = require('axios');
 const queries = require("./DBManagement/queries");
 const fs = require('fs');
 const pool = require('./DBManagement/DatabaseConnection');
-const direction = require('./types/enums')
+//const direction = require('./types/enums')
 const apiKey = '8b2b861306a8480e93e102003243005';
 
-const getConditionId = (temperature) => {
-    // const conditions = [{ id: 1, name: 'cold' }, { id: 2, name: 'warm' }, { id: 3, name: 'mild' }]; // estratto tramite query
+const getConditionId = async (temperature) => {
+    const conditionQuery = 'SELECT id FROM Condition WHERE name = $1';
 
-    // let condition;
-    // if (temperature < 13) { //cold
-    //    condition = direction.WARM;
-    // }
-    // else if (temperature > 28) { //warm
-    //     condition = 'warm'
-    // } else { //mild
-    //     condition = 'mild'
-    // }
-    // //trovi l'id o cerchi l'oggetto che ha come name = codition
-    // return condition.id
+    let conditionName;
 
-    if (temperature < 13) { //cold
-        return { id: 1, name: 'cold' };
+    if (temperature < 13) {
+        conditionName = 'cold';
+    } else if (temperature > 25) {
+        conditionName = 'warm';
+    } else {
+        conditionName = 'mild';
     }
-    else if (temperature > 28) { //warm
-        return { id: 2, name: 'warm' };
-    } else { //mild
-        return { id: 3, name: 'mild' };
-    }
+
+    const res = await pool.query(conditionQuery, [conditionName]);
+    return res.rows[0].id;
 };
+
 
 const meteo = async () => {
     try {
@@ -41,15 +34,19 @@ const meteo = async () => {
             const response = await axios.default.get(url);
 
             const { temp_c, humidity, last_updated } = response.data.current;
-            const condition = getConditionId(temp_c,);
+            const condition = await getConditionId(temp_c,);
 
             const insertTemperature = queries.getQueryInsertTemperature();
             // modificare last update, prendere il parametro last_updated_epoch
-            await pool.query(insertTemperature, [city.id, condition.id, temp_c, humidity, last_updated]);
+            await pool.query(insertTemperature, [city.id, condition, temp_c, humidity, last_updated]);
+
+            const conditionQuery = 'SELECT name FROM Condition WHERE id = $1';
+            const res = await pool.query(conditionQuery, [condition]);
+            const conditionName = res.rows[0].name;
 
             console.log(`Città: ${city.name}`);
             console.log(`Temperatura: ${temp_c} °C`);
-            console.log(`Condizione: ${condition.name}`);
+            console.log(`Condizione: ${conditionName}`);
             console.log(`Umidità: ${humidity}%`);
             console.log(`Orario: ${last_updated} \n`);
 
